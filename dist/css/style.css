@@ -1,0 +1,7 @@
+body {
+	margin:0px
+}
+@font-face {
+    font-family: KOMIKAX_cyr; /* Гарнитура шрифта */
+    src: url(../fonts/KOMIKAX_cyr.ttf); /* Путь к файлу со шрифтом */
+}

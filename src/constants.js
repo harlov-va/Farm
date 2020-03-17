@@ -1,0 +1,9 @@
+export const GAME_WIDTH = 640;
+export const GAME_HEIGTH= 640;
+export const WORKING_WIDTH = GAME_WIDTH - 128;
+export const WORKING_HEIGTH = GAME_HEIGTH;
+export const MENU_HEIGTH = GAME_HEIGTH-128;
+export const SPRITE_WIDTH = 64;
+export const SPRITE_HEIGTH = 64;
+export const WIDTH_ANIMATION = 704;
+export const HEIGHT_ANMATION = 384;
