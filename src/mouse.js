@@ -1,6 +1,6 @@
 import { WORKING_WIDTH, WORKING_HEIGTH, MENU_HEIGTH, SPRITE_WIDTH, SPRITE_HEIGTH } from "./constants";
-export default class Mouse{
-    constructor(characters, control){
+export default class Mouse {
+    constructor(characters, control) {
         this.characters = characters;
         this.control = control;
         this.clickHandler = this.onClick.bind(this);
@@ -64,9 +64,13 @@ export default class Mouse{
         }
     };
     toPreviousPlace() {
+        this.findedCharacter.state.draggable = true;
         this.findedCharacter.x = this.beginCoords.x;
         this.findedCharacter.y = this.beginCoords.y;
-        this.findedCharacter.state.draggable = true;
+
+    }
+    _checkOverlap(r1, r2) {
+        return !(r1.x + r1.width < r2.x || r1.y + r1.height < r2.y || r1.x > r2.x + r2.width || r1.y > r2.y + r2.height);
     }
     onMouseUp(upEvt) {
         if (this.findedCharacter) {
@@ -78,13 +82,12 @@ export default class Mouse{
                 this.findedCharacter.y = (Math.trunc(upEvt.clientY / SPRITE_HEIGTH)) * SPRITE_HEIGTH;
                 this.findedCharacter.state.draggable = false;
                 for (let item of this.characters) {
-                    if (item == this.findedCharacter) continue;
-                    if ((item.view.x <= this.findedCharacter.x && (item.view.x + item.view.width) >= this.findedCharacter.x) &&
-                        (item.view.y <= this.findedCharacter.y && (item.view.y + item.view.height) >= this.findedCharacter.y)) {
+                    if (item == this.findedCharacter) continue;                    
+                    if (this._checkOverlap(this.findedCharacter.view, item.view)) {
                         this.toPreviousPlace();
                         break;
                     }
-                }
+                } 
                 //и в логику игры
                 if (!this.findedCharacter.state.draggable) this.control.play(this.findedCharacter.state, `mouseup`);
             }
