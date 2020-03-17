@@ -88,6 +88,7 @@ export default class Mouse {
                         break;
                     }
                 } 
+                
                 //и в логику игры
                 if (!this.findedCharacter.state.draggable) this.control.play(this.findedCharacter.state, `mouseup`);
             }
