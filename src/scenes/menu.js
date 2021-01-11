@@ -15,7 +15,7 @@ export class Menu extends Scene{
     render(time){
         this.update(time)
         this.game.screen.drawImage(0,0,`title`);
-        this.game.screen.print(200, GAME_HEIGTH*2/3, `#FFFFFF`,`KOMIKAX_cyr`, `Нажмите пробел`);
+        this.game.screen.print(200, GAME_HEIGTH*2/3, `#FFFFFF`,`KOMIKAX_cyr`, `Press space`);
         super.render(time);
     }
 }
